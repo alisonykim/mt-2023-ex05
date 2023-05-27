@@ -1,0 +1,107 @@
+name: "transformer_c"
+joeynmt_version: "2.0.0"
+
+
+data:
+    train: "../mt-2023-ex05/data/train.de-nl"
+    dev:   "../mt-2023-ex05/data/dev.de-nl"
+    test:  "../mt-2023-ex05/data/test.de-nl"
+    dataset_type: "plain"
+    sample_train_subset: 100000
+    src:
+        lang: "de"
+        level: "bpe" # "char", "word", "bpe"
+        lowercase: False
+        normalize: False
+        max_sent_length: 100
+        # voc_limit: 2000 # Use if not BPE
+        voc_file : "../mt-2023-ex05/vocab/vocab-10000-joint.txt" # Use if BPE
+        tokenizer_type: "subword-nmt" # "sentencepiece" or "subword-nmt"
+        tokenizer_cfg:
+            pretokenizer: "moses"
+            num_merges: 10000 # subword-nmt
+            codes: "../mt-2023-ex05/vocab/codes10000.bpe" # subword-nmt
+            dropout: 0.0 # subword-nmt
+            model_type: "bpe" # "unigram" oder "bpe"
+            # alpha: 0.1 # sentencepiece
+            # character_coverage: 1.0 # sentencepiece
+            # nbest_size: 10 # sentencepiece
+    trg: 
+        lang: "nl"
+        level: "bpe" # "char", "word", "bpe"
+        lowercase: False
+        normalize: False
+        max_sent_length: 100
+        # voc_limit: 2000 # Use if not BPE
+        voc_file : "../mt-2023-ex05/vocab/vocab-10000-joint.txt" # Use if BPE
+        tokenizer_type: "subword-nmt" # "sentencepiece" or "subword-nmt"
+        tokenizer_cfg:
+            pretokenizer: "moses"
+            num_merges: 2000 # subword-nmt
+            codes: "../mt-2023-ex05/vocab/codes10000.bpe" # subword-nmt
+            dropout: 0.0 # subword-nmt
+            model_type: "bpe" # "unigram" oder "bpe"
+            # alpha: 0.1 # sentencepiece
+            # character_coverage: 1.0 # sentencepiece
+            # nbest_size: 10 # sentencepiece
+
+testing:
+    beam_size: 5
+    alpha: 1.0
+
+training:
+    random_seed: 42
+    optimizer: "adam"
+    normalization: "tokens"
+    learning_rate: 0.0003
+    batch_size: 2048
+    batch_type: "token"
+    eval_batch_size: 1024
+    eval_batch_type: "token"
+    scheduling: "plateau"
+    patience: 8
+    weight_decay: 0.0
+    decrease_factor: 0.7
+    early_stopping_metric: "ppl"
+    epochs: 10
+    validation_freq: 500
+    logging_freq: 100
+    eval_metric: "bleu"
+    model_dir: "models/transformer_c" # anpassen
+    overwrite: True
+    shuffle: True
+    use_cuda: False
+    max_output_length: 100
+    print_valid_sents: [0, 1, 2, 3, 4]
+    label_smoothing: 0.3
+
+model:
+    initializer: "xavier_uniform"
+    bias_initializer: "zeros"
+    init_gain: 1.0
+    embed_initializer: "xavier_uniform"
+    embed_init_gain: 1.0
+    tied_embeddings: True # True if BPE
+    tied_softmax: True
+    encoder:
+        type: "transformer"
+        num_layers: 4
+        num_heads: 2
+        embeddings:
+            embedding_dim: 256
+            scale: True
+            dropout: 0
+        hidden_size: 256
+        ff_size: 512
+        dropout: 0
+    decoder:
+        type: "transformer"
+        num_layers: 1
+        num_heads: 2
+        embeddings:
+            embedding_dim: 256
+            scale: True
+            dropout: 0
+        hidden_size: 256
+        ff_size: 512
+        dropout: 0
