@@ -1,0 +1,36 @@
+2023-05-28 16:46:15,377 - INFO - root - Hello! This is Joey-NMT (version 2.2.0).
+2023-05-28 16:46:15,405 - INFO - joeynmt.model - Building an encoder-decoder model...
+2023-05-28 16:46:15,469 - INFO - joeynmt.model - Enc-dec model built.
+2023-05-28 16:46:15,529 - INFO - joeynmt.helpers - Load model from /Users/alisonykim/Documents/master_uzh/_23fs_mt/ex/mt-2023-ex05/models/transformer_a/26000.ckpt.
+2023-05-28 16:46:15,565 - INFO - joeynmt.tokenizers - de tokenizer: BasicTokenizer(level=word, lowercase=False, normalize=False, filter_by_length=(-1, -1), pretokenizer=moses)
+2023-05-28 16:46:15,565 - INFO - joeynmt.tokenizers - nl tokenizer: BasicTokenizer(level=word, lowercase=False, normalize=False, filter_by_length=(-1, -1), pretokenizer=moses)
+2023-05-28 16:46:15,669 - WARNING - joeynmt.helpers - `alpha` option is obsolete. Please use `beam_alpha`, instead.
+2023-05-28 16:46:15,669 - INFO - joeynmt.prediction - Predicting 1779 example(s)... (Beam search with beam_size=5, beam_alpha=1.0, n_best=1, min_output_length=1, max_output_length=-1, return_prob='none', generate_unk=True, repetition_penalty=-1, no_repeat_ngram_size=-1)
+2023-05-28 16:46:57,234 - INFO - joeynmt.prediction - Generation took 41.4909[sec]. (No references given)
+2023-05-28 16:47:49,104 - INFO - root - Hello! This is Joey-NMT (version 2.2.0).
+2023-05-28 16:47:49,132 - INFO - joeynmt.model - Building an encoder-decoder model...
+2023-05-28 16:47:49,192 - INFO - joeynmt.model - Enc-dec model built.
+2023-05-28 16:47:49,234 - INFO - joeynmt.helpers - Load model from /Users/alisonykim/Documents/master_uzh/_23fs_mt/ex/mt-2023-ex05/models/transformer_a/26000.ckpt.
+2023-05-28 16:47:49,268 - INFO - joeynmt.tokenizers - de tokenizer: BasicTokenizer(level=word, lowercase=False, normalize=False, filter_by_length=(-1, -1), pretokenizer=moses)
+2023-05-28 16:47:49,268 - INFO - joeynmt.tokenizers - nl tokenizer: BasicTokenizer(level=word, lowercase=False, normalize=False, filter_by_length=(-1, -1), pretokenizer=moses)
+2023-05-28 16:47:49,373 - WARNING - joeynmt.helpers - `alpha` option is obsolete. Please use `beam_alpha`, instead.
+2023-05-28 16:47:49,373 - INFO - joeynmt.prediction - Predicting 1779 example(s)... (Beam search with beam_size=5, beam_alpha=1.0, n_best=1, min_output_length=1, max_output_length=-1, return_prob='none', generate_unk=True, repetition_penalty=-1, no_repeat_ngram_size=-1)
+2023-05-28 16:48:31,836 - INFO - joeynmt.prediction - Generation took 42.3845[sec]. (No references given)
+2023-05-28 16:56:53,804 - INFO - root - Hello! This is Joey-NMT (version 2.2.0).
+2023-05-28 16:56:53,831 - INFO - joeynmt.model - Building an encoder-decoder model...
+2023-05-28 16:56:53,893 - INFO - joeynmt.model - Enc-dec model built.
+2023-05-28 16:56:53,942 - INFO - joeynmt.helpers - Load model from /Users/alisonykim/Documents/master_uzh/_23fs_mt/ex/mt-2023-ex05/models/transformer_a/26000.ckpt.
+2023-05-28 16:56:53,974 - INFO - joeynmt.tokenizers - de tokenizer: BasicTokenizer(level=word, lowercase=False, normalize=False, filter_by_length=(-1, -1), pretokenizer=moses)
+2023-05-28 16:56:53,975 - INFO - joeynmt.tokenizers - nl tokenizer: BasicTokenizer(level=word, lowercase=False, normalize=False, filter_by_length=(-1, -1), pretokenizer=moses)
+2023-05-28 16:56:54,078 - WARNING - joeynmt.helpers - `alpha` option is obsolete. Please use `beam_alpha`, instead.
+2023-05-28 16:56:54,078 - INFO - joeynmt.prediction - Predicting 1779 example(s)... (Beam search with beam_size=5, beam_alpha=1.0, n_best=1, min_output_length=1, max_output_length=-1, return_prob='none', generate_unk=True, repetition_penalty=-1, no_repeat_ngram_size=-1)
+2023-05-28 16:57:35,357 - INFO - joeynmt.prediction - Generation took 41.2064[sec]. (No references given)
+2023-05-28 16:58:12,854 - INFO - root - Hello! This is Joey-NMT (version 2.2.0).
+2023-05-28 16:58:12,882 - INFO - joeynmt.model - Building an encoder-decoder model...
+2023-05-28 16:58:12,942 - INFO - joeynmt.model - Enc-dec model built.
+2023-05-28 16:58:12,983 - INFO - joeynmt.helpers - Load model from /Users/alisonykim/Documents/master_uzh/_23fs_mt/ex/mt-2023-ex05/models/transformer_a/26000.ckpt.
+2023-05-28 16:58:13,026 - INFO - joeynmt.tokenizers - de tokenizer: BasicTokenizer(level=word, lowercase=False, normalize=False, filter_by_length=(-1, -1), pretokenizer=moses)
+2023-05-28 16:58:13,026 - INFO - joeynmt.tokenizers - nl tokenizer: BasicTokenizer(level=word, lowercase=False, normalize=False, filter_by_length=(-1, -1), pretokenizer=moses)
+2023-05-28 16:58:13,132 - WARNING - joeynmt.helpers - `alpha` option is obsolete. Please use `beam_alpha`, instead.
+2023-05-28 16:58:13,132 - INFO - joeynmt.prediction - Predicting 1779 example(s)... (Beam search with beam_size=5, beam_alpha=1.0, n_best=1, min_output_length=1, max_output_length=-1, return_prob='none', generate_unk=True, repetition_penalty=-1, no_repeat_ngram_size=-1)
+2023-05-28 16:58:56,750 - INFO - joeynmt.prediction - Generation took 43.5432[sec]. (No references given)
