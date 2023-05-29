@@ -46,7 +46,7 @@ for k in $beam_sizes; do
 	sed -i '' '1d' $translations_sub/hyps.$k.$trg
 
 	# Calculate BLEU, write to log file
-	cat $translations_sub/hyps.$k.$trg | sacrebleu $data/test.$src-$trg.$trg > $translations_logs/$k.log
+	cat $translations_sub/hyps.$k.$trg | sacrebleu $data/test.$src-$trg.$trg > $translations_logs/hyps.$k.log
 
 	# Append time to log file
 	echo "Time taken (seconds): $SECONDS" >> $translations_logs/hyps.$k.log
