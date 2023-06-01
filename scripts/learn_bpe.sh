@@ -26,10 +26,6 @@ for s in $num_symbols; do
 	# Concatenate DE and NL vocabulary files
 	cat $vocab/vocab$s-$src.txt $vocab/vocab$s-$trg.txt > $vocab/vocab$s-joint.txt
 
-	# # Re-apply BPE with vocabulary filter to encode a new text
-	# subword-nmt apply-bpe -c $vocab/codes$s.bpe --vocabulary $vocab/vocab$s-joint.txt --vocabulary-threshold $s --dropout 0.1 --seed 42 < $src_file > $src_file.BPE
-	# subword-nmt apply-bpe -c $vocab/codes$s.bpe --vocabulary $vocab/vocab$s-joint.txt --vocabulary-threshold $s --dropout 0.1 --seed 42 < $trg_file > $trg_file.BPE
-
 	# Remove token frequencies for training model after learning BPE
 	sed -i '' 's/ [0-9]*$//' $vocab/vocab$s-joint.txt
 
