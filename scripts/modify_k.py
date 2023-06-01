@@ -50,5 +50,5 @@ if __name__ == '__main__':
 		with open(MODEL_PATH_K, 'w') as config_k:
 			yaml.dump(yaml_doc, config_k, default_flow_style=False, sort_keys=False)
 	except FileNotFoundError:
-		print(f'Invalid model name {args.task}. Please try again with a valid model name, or train a model with this name and rerun this script.')
+		print(f'Invalid model name {args.model}. Please try again with a valid model name, or train a model with this name and rerun this script.')
 		sys.exit()
