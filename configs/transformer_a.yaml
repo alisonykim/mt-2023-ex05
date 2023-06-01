@@ -47,7 +47,7 @@ data:
             nbest_size: 10 # sentencepiece
 
 testing:
-    beam_size: 5 # anpassen
+    beam_size: 1 # anpassen
     alpha: 1.0
 
 training:

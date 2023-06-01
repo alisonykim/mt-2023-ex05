@@ -15,12 +15,12 @@ data:
         normalize: False
         max_sent_length: 100
         # voc_limit: 2000 # Use if not BPE
-        voc_file : "../mt-2023-ex05/vocab/vocab-10000-joint.txt" # Use if BPE
+        voc_file : "../mt-2023-ex05/vocab/vocab50000-joint.txt" # Use if BPE
         tokenizer_type: "subword-nmt" # "sentencepiece" or "subword-nmt"
         tokenizer_cfg:
             pretokenizer: "moses"
             num_merges: 10000 # subword-nmt
-            codes: "../mt-2023-ex05/vocab/codes10000.bpe" # subword-nmt
+            codes: "../mt-2023-ex05/vocab/codes50000.bpe" # subword-nmt
             dropout: 0.0 # subword-nmt
             model_type: "bpe" # "unigram" oder "bpe"
             # alpha: 0.1 # sentencepiece
@@ -33,12 +33,12 @@ data:
         normalize: False
         max_sent_length: 100
         # voc_limit: 2000 # Use if not BPE
-        voc_file : "../mt-2023-ex05/vocab/vocab-10000-joint.txt" # Use if BPE
+        voc_file : "../mt-2023-ex05/vocab/vocab50000-joint.txt" # Use if BPE
         tokenizer_type: "subword-nmt" # "sentencepiece" or "subword-nmt"
         tokenizer_cfg:
             pretokenizer: "moses"
-            num_merges: 2000 # subword-nmt
-            codes: "../mt-2023-ex05/vocab/codes10000.bpe" # subword-nmt
+            num_merges: 10000 # subword-nmt
+            codes: "../mt-2023-ex05/vocab/codes50000.bpe" # subword-nmt
             dropout: 0.0 # subword-nmt
             model_type: "bpe" # "unigram" oder "bpe"
             # alpha: 0.1 # sentencepiece

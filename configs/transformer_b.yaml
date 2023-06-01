@@ -15,7 +15,7 @@ data:
         normalize: False
         max_sent_length: 100
         # voc_limit: 2000 # Use if not BPE
-        voc_file : "../mt-2023-ex05/vocab/vocab-2000-joint.txt" # Use if BPE
+        voc_file : "../mt-2023-ex05/vocab/vocab2000-joint.txt" # Use if BPE
         tokenizer_type: "subword-nmt" # "sentencepiece" or "subword-nmt"
         tokenizer_cfg:
             pretokenizer: "moses"
@@ -33,7 +33,7 @@ data:
         normalize: False
         max_sent_length: 100
         # voc_limit: 2000 # Use if not BPE
-        voc_file : "../mt-2023-ex05/vocab/vocab-2000-joint.txt" # Use if BPE
+        voc_file : "../mt-2023-ex05/vocab/vocab2000-joint.txt" # Use if BPE
         tokenizer_type: "subword-nmt" # "sentencepiece" or "subword-nmt"
         tokenizer_cfg:
             pretokenizer: "moses"
@@ -46,7 +46,7 @@ data:
             # nbest_size: 10 # sentencepiece
 
 testing:
-    beam_size: 5
+    beam_size: 1
     alpha: 1.0
 
 training:
