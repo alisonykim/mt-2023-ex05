@@ -33,7 +33,7 @@ for ext in $model_ext; do
 	# make predictions, write to file
 	CUDA_VISIBLE_DEVICES=$device OMP_NUM_THREADS=$num_threads python -m joeynmt translate $configs/$model_name.yaml < $data/test.$src-$trg.$src > $translations_sub/test.$model_name.$trg
 
-	# # delete first line: "sentence" is written to top of file, which messes up alignment for BLEU
+	# delete first line: "sentence" is written to top of file, which messes up alignment for BLEU
 	sed -i '' '1d' $translations_sub/test.$model_name.$trg
 	
 	# compute case-sensitive BLEU 
