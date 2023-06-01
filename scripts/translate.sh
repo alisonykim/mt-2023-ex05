@@ -20,9 +20,7 @@ device=0
 
 model_name="transformer_c"
 
-beam_sizes="1 2 4 6 8 10 12 14 16 18"
-
-SECONDS=0
+beam_sizes="2 3 4 5 6 7 8 10 12 15 20"
 
 for k in $beam_sizes; do
 	# Create temporary config file with specified beam size `k`
@@ -35,10 +33,10 @@ for k in $beam_sizes; do
 	# Perform inference
 	echo ""
 	echo "###############################################################################"
-	echo "now producing translations with model \"$model_name\", beam size $k"
+	echo "now performing inference with model \"$model_name\", beam size $k"
 	echo "###############################################################################"
 
-	SECONDS_K=0
+	SECONDS=0
 	
 	CUDA_VISIBLE_DEVICES=$device OMP_NUM_THREADS=$num_threads python -m joeynmt translate $configs/$model_name\_$k.yaml < $data/test.$src-$trg.$src > $translations_sub/hyps.$k.$trg
 	
@@ -49,6 +47,8 @@ for k in $beam_sizes; do
 	cat $translations_sub/hyps.$k.$trg | sacrebleu $data/test.$src-$trg.$trg > $translations_logs/hyps.$k.log
 
 	# Append time to log file
+	echo ""
+	echo "Time taken (seconds): $SECONDS"
 	echo "Time taken (seconds): $SECONDS" >> $translations_logs/hyps.$k.log
 
 	# Delete temporary config file

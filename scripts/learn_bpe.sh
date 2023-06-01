@@ -13,7 +13,7 @@ trg=nl
 src_file=$data/train.$src-$trg.$src
 trg_file=$data/train.$src-$trg.$trg
 
-num_symbols="2000 10000"
+num_symbols="2000 50000"
 
 for s in $num_symbols; do
 	echo "Learning BPE for vocabulary size $s"
@@ -21,13 +21,17 @@ for s in $num_symbols; do
 	SECONDS=0
 
 	# Learn BPE
-	subword-nmt learn-joint-bpe-and-vocab --input $src_file $trg_file --total-symbols -s $s -o $vocab/codes$s.bpe --write-vocabulary $vocab/vocab-$s-$src.txt $vocab/vocab-$s-$trg.txt
+	subword-nmt learn-joint-bpe-and-vocab --input $src_file $trg_file --total-symbols -s $s -o $vocab/codes$s.bpe --write-vocabulary $vocab/vocab$s-$src.txt $vocab/vocab$s-$trg.txt
 
 	# Concatenate DE and NL vocabulary files
-	cat $vocab/vocab-$s-$src.txt $vocab/vocab-$s-$trg.txt > $vocab/vocab-$s-joint.txt
+	cat $vocab/vocab$s-$src.txt $vocab/vocab$s-$trg.txt > $vocab/vocab$s-joint.txt
 
-	# Remove token frequencies
-	sed -i '' 's/ [0-9]*$//' $vocab/vocab-$s-joint.txt
+	# # Re-apply BPE with vocabulary filter to encode a new text
+	# subword-nmt apply-bpe -c $vocab/codes$s.bpe --vocabulary $vocab/vocab$s-joint.txt --vocabulary-threshold $s --dropout 0.1 --seed 42 < $src_file > $src_file.BPE
+	# subword-nmt apply-bpe -c $vocab/codes$s.bpe --vocabulary $vocab/vocab$s-joint.txt --vocabulary-threshold $s --dropout 0.1 --seed 42 < $trg_file > $trg_file.BPE
+
+	# Remove token frequencies for training model after learning BPE
+	sed -i '' 's/ [0-9]*$//' $vocab/vocab$s-joint.txt
 
 	echo "time to finish: $SECONDS sec"
 done

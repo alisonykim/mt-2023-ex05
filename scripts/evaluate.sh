@@ -1,41 +1,43 @@
 #! /bin/bash
 
+
 scripts=$(dirname "$0")
 base=$scripts/..
 
-data=$base/sampled_data
+data=$base/data
 configs=$base/configs
-
 translations=$base/translations
 
 mkdir -p $translations
 
-src=?
-trg=?
-
+src=de
+trg=nl
 
 num_threads=4
 device=0
 
-# measure time
+model_ext="a b c" # Models to evaluate
 
-SECONDS=0
+for ext in $model_ext; do
+	model_name=transformer_$ext
+	translations_sub=$translations/$model_name
+	mkdir -p $translations_sub
 
-model_name=?
+	echo ""
+	echo "###############################################################################"
+	echo "now evaluating \"$model_name\""
+	echo "###############################################################################"
+	
+	SECONDS=0
+	
+	# make predictions, write to file
+	CUDA_VISIBLE_DEVICES=$device OMP_NUM_THREADS=$num_threads python -m joeynmt translate $configs/$model_name.yaml < $data/test.$src-$trg.$src > $translations_sub/test.$model_name.$trg
 
-echo "###############################################################################"
-echo "model_name $model_name"
+	# # delete first line: "sentence" is written to top of file, which messes up alignment for BLEU
+	sed -i '' '1d' $translations_sub/test.$model_name.$trg
+	
+	# compute case-sensitive BLEU 
+	cat $translations_sub/test.$model_name.$trg | sacrebleu $data/test.$src-$trg.$trg
 
-translations_sub=$translations/$model_name
-
-mkdir -p $translations_sub
-
-CUDA_VISIBLE_DEVICES=$device OMP_NUM_THREADS=$num_threads python -m joeynmt translate $configs/$model_name.yaml < $data/test.$src > $translations_sub/test.$model_name.$trg
-
-# compute case-sensitive BLEU 
-
-cat $translations_sub/test.$model_name.$trg | sacrebleu $data/test.$trg
-
-
-echo "time taken:"
-echo "$SECONDS seconds"
+	echo "time taken to evaluate $model_name: $SECONDS sec"
+done

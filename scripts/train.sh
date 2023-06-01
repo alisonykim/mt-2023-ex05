@@ -5,24 +5,27 @@ base=$scripts/..
 
 models=$base/models
 configs=$base/configs
+logs=$base/logs
 
 mkdir -p $models
+mkdir -p $logs
 
 num_threads=4
 
-# measure time
+model_ext="b c" # Models to train
 
-SECONDS=0
+for ext in $model_ext; do
+	model_name=transformer_$ext
+	mkdir -p $logs/$model_name
 
-logs=$base/logs
+	echo ""
+	echo "###############################################################################"
+	echo "now training model \"$model_name\""
+	echo "###############################################################################"
 
-model_name=?
+	SECONDS=0
 
-mkdir -p $logs
+	OMP_NUM_THREADS=$num_threads python -m joeynmt train $configs/$model_name.yaml > $logs/$model_name/out 2> $logs/$model_name/err
 
-mkdir -p $logs/$model_name
-
-OMP_NUM_THREADS=$num_threads python -m joeynmt train $configs/$model_name.yaml > $logs/$model_name/out 2> $logs/$model_name/err
-
-echo "time taken:"
-echo "$SECONDS seconds"
+	echo "time taken to train $model_name: $SECONDS sec"
+done
