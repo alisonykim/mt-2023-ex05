@@ -12,7 +12,7 @@ mkdir -p $logs
 
 num_threads=4
 
-model_ext="b c" # Models to train
+model_ext="a b c" # Models to train
 
 for ext in $model_ext; do
 	model_name=transformer_$ext
