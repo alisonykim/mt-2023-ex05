@@ -19,7 +19,7 @@ data:
         tokenizer_type: "subword-nmt" # "sentencepiece" or "subword-nmt"
         tokenizer_cfg:
             pretokenizer: "moses"
-            num_merges: 10000 # subword-nmt
+            num_merges: 2000 # subword-nmt
             codes: "../mt-2023-ex05/vocab/codes50000.bpe" # subword-nmt
             dropout: 0.0 # subword-nmt
             model_type: "bpe" # "unigram" oder "bpe"
@@ -37,7 +37,7 @@ data:
         tokenizer_type: "subword-nmt" # "sentencepiece" or "subword-nmt"
         tokenizer_cfg:
             pretokenizer: "moses"
-            num_merges: 10000 # subword-nmt
+            num_merges: 2000 # subword-nmt
             codes: "../mt-2023-ex05/vocab/codes50000.bpe" # subword-nmt
             dropout: 0.0 # subword-nmt
             model_type: "bpe" # "unigram" oder "bpe"
